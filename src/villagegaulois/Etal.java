@@ -6,7 +6,7 @@ import produit.IProduit;
 public class Etal<P extends IProduit> implements IEtal {
 	private Gaulois vendeur;
 	private P[] produits;
-	private int nbProduit;
+	private int nbProduit=0;
 	private int quantiteDebutMarche;
 	private int quantite;
 	private int prix;
@@ -27,6 +27,7 @@ public class Etal<P extends IProduit> implements IEtal {
 	public void installerVendeur(Gaulois vendeur, P[] produit, int prix) {
 		this.vendeur = vendeur;
 		this.produits = produit;
+		this.nbProduit=produit.length;
 		this.prix = prix;
 	}
 

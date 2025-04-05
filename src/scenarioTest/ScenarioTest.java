@@ -8,10 +8,10 @@ import villagegaulois.IEtal;
 
 public class ScenarioTest {
 
-	public static void acheterProduit(Etal[] marche, String produit, int quantiteSouhaitee) {
+	public static void acheterProduit(IEtal[] marche, String produit, int quantiteSouhaitee) {
 		int quantiteRestante = quantiteSouhaitee;
 		for (int i = 0; i < marche.length && quantiteRestante != 0; i++) {
-			Etal etal = marche[i];
+			IEtal etal = marche[i];
 			int quantiteDisponible = etal.contientProduit(produit, quantiteRestante);
 			if (quantiteDisponible != 0) {
 				int prix = etal.acheterProduit(quantiteDisponible);
@@ -50,16 +50,16 @@ public class ScenarioTest {
 		Etal<Sanglier> etal1=new Etal<Sanglier>();
 		Etal<Sanglier> etal2=new Etal<Sanglier>();
 		Etal<Poisson> etal3=new Etal<Poisson>();
+		etal1.installerVendeur(asterix, sangliersAsterix,10);
+		etal2.installerVendeur(obelix, sangliersObelix, 8);
+		etal3.installerVendeur(ordralfabetix, poissons, 7);
 		marche[0]=etal1;
 		marche[1]=etal2;
 		marche[2]=etal3;
-		etal1.installerVendeur(obelix, sangliersObelix, 8);
-		etal2.installerVendeur(asterix, sangliersAsterix, 10);
-		etal3.installerVendeur(ordralfabetix, poissons, 7);
 		System.out.println(marche[0].etatEtal());
 		System.out.println(marche[1].etatEtal());
 		System.out.println(marche[2].etatEtal());
-		//acheterProduit(marche, "Sanglier", 3);
+		acheterProduit(marche, "sanglier", 3);
 		System.out.println(marche[0].etatEtal());
 		System.out.println(marche[1].etatEtal());
 		System.out.println(marche[2].etatEtal());
